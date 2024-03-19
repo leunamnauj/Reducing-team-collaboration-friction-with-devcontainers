@@ -1,0 +1,26 @@
+{
+  "name": "MyEnv",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+  "mounts": [
+    "source=${localEnv:HOME}/.kube/config,target=/home/vscode/.kube/config,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "esbenp.prettier-vscode",
+        "AquaSecurityOfficial.trivy-vulnerability-scanner",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/tfsec:1": {},
+    "ghcr.io/devcontainers-contrib/features/terraform-docs:1": {},
+    "ghcr.io/dhoeric/features/trivy:1": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  }
+}

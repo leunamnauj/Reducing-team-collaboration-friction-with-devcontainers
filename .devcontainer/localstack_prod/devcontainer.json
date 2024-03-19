@@ -1,0 +1,35 @@
+{
+  "name": "MyEnv-Local-prod",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "esbenp.prettier-vscode",
+        "AquaSecurityOfficial.trivy-vulnerability-scanner",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "containerEnv": {
+    "AWS_ACCESS_KEY_ID": "my-access-key",
+    "AWS_SECRET_ACCESS_KEY": "my-secret-key",
+    "AWS_DEFAULT_REGION": "us-east-1",
+    "AWS_ENDPOINT_URL": "http://localhost:4566",
+    "TF_WORKSPACE": "prod",
+    "TF_VAR_environment": "prod"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/tfsec:1": {},
+    "ghcr.io/devcontainers-contrib/features/terraform-docs:1": {},
+    "ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
+    "ghcr.io/dhoeric/features/trivy:1": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+
+    "ghcr.io/devcontainers-contrib/features/localstack:2": {}
+  },
+  "postStartCommand": ["localstack", "start"]
+}
